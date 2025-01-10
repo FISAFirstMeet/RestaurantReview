@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import model.domain.Category;
@@ -12,11 +13,61 @@ import model.dto.ReviewDTO;
 import util.DBUtil;
 
 public class ReviewDAO {
-
 	// C
+	// 리뷰 등록
+		public static boolean createReview(ReviewDTO reviewDTO) throws SQLException {
+			Connection con = null;
+			PreparedStatement pstmt = null;
 
+			try {
+				con = DBUtil.getConnection();
+				pstmt = con.prepareStatement("insert into review values(?,?,?,?,?,?,?,?,?,?");
+				pstmt.setString(1, reviewDTO.getUserId());
+				pstmt.setInt(2, reviewDTO.getAge());
+				pstmt.setString(3, reviewDTO.getGender().name());
+				pstmt.setString(4, reviewDTO.getRestaurantName());
+				pstmt.setString(5, reviewDTO.getCategory().name());
+				pstmt.setString(6, reviewDTO.getMenu());
+				pstmt.setInt(7, reviewDTO.getPrice());
+				pstmt.setString(8, reviewDTO.getContent());
+				pstmt.setDouble(9, reviewDTO.getScore());
+				pstmt.setTimestamp(10, Timestamp.valueOf(reviewDTO.getDate()));
+
+				int result = pstmt.executeUpdate();
+				if (result == 1) {
+					return true;
+				}
+			} finally {
+					DBUtil.close(con, pstmt);
+			}
+			return false;
+		}
+
+		
 	// R
-
+	public static boolean checkReview(ReviewDTO reviewDTO) throws SQLException{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset=null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			pstmt = conn.prepareStatement("select * from review where user_id=? and restaurant_name=? and menu=?");
+			pstmt.setString(1, reviewDTO.getUserId());
+			pstmt.setString(2, reviewDTO.getRestaurantName());
+			pstmt.setString(3, reviewDTO.getMenu());
+			
+			int result = pstmt.executeUpdate();
+			
+			if (result >= 1) {
+				return true;
+			}
+		} finally {
+			DBUtil.close(conn, pstmt);
+		}
+		return false;
+	}
+	
 	// 3
 	public static ArrayList<ReviewDTO> getReviewsSortedByPriceDesc() throws SQLException {
 		Connection conn = null;
