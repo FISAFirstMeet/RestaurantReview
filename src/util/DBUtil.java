@@ -14,7 +14,7 @@ public class DBUtil {
 	
 	static {
 		try {
-			p.load(new FileInputStream("db.propertise"));
+			p.load(new FileInputStream("db.properties"));
 			Class.forName(p.getProperty("db.driver"));
 		} catch (IOException e) {
 			e.printStackTrace();
