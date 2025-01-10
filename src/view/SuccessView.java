@@ -94,17 +94,17 @@ public class SuccessView {
 		printReview(reviewDTOs);
 	}
 	
-	public static void create() {
+	public static void create(boolean isOk) {
 		System.out.println("[리뷰가 작성되었습니다.]");
 		isContinue();
 	}
 
-	public static void update() {
+	public static void update(boolean isOk) {
 		System.out.println("[리뷰가 업데이트 되었습니다.]");
 		isContinue();
 	}
 	
-	public static void delete() {
+	public static void delete(boolean isOk) {
 		System.out.println("[리뷰가 삭제되었습니다.]");
 		isContinue();
 	}
