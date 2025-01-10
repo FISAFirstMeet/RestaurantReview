@@ -5,14 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-<<<<<<< HEAD
 import org.junit.Test;
 
-=======
 import model.domain.Category;
 import model.domain.Gender;
->>>>>>> e7f6fa80cb46858407f5319fbeb70caf30e0995d
 import model.dto.ReviewDTO;
 import util.DBUtil;
 
@@ -110,9 +106,9 @@ public class ReviewDAO {
 						.reviewId(rset.getInt(1))
 						.userId(rset.getString(2))
 						.age(rset.getInt(3))
-						.gender(rset.getString(4))
+						.gender(Gender.valueOf(rset.getString(4)))
 						.restaurantName(rset.getString(5))
-						.category(rset.getString(6))
+						.category(Category.valueOf(rset.getString(6)))
 						.menu(rset.getString(7))
 						.price(rset.getInt(8))
 						.content(rset.getString(9))
@@ -155,9 +151,9 @@ public class ReviewDAO {
 						.reviewId(rset.getInt(1))
 						.userId(rset.getString(2))
 						.age(rset.getInt(3))
-						.gender(rset.getString(4))
+						.gender(Gender.valueOf(rset.getString(4)))
 						.restaurantName(rset.getString(5))
-						.category(rset.getString(6))
+						.category(Category.valueOf(rset.getString(6)))
 						.menu(rset.getString(7))
 						.price(rset.getInt(8))
 						.content(rset.getString(9))
@@ -166,7 +162,7 @@ public class ReviewDAO {
 						.build());
 			}
 		} finally {
-			DBUtil.close(conn, pstmt, rset)
+			DBUtil.close(conn, pstmt, rset);
 		}
 		
 		return reviews;

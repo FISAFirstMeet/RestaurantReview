@@ -29,11 +29,8 @@ public class StartView {
 			if (reply.equals("Q")) {
 				break;
 			}
-<<<<<<< HEAD
+			
 			//ReviewController.run(reply);
-=======
-//			ReviewController.run(reply);
->>>>>>> e7f6fa80cb46858407f5319fbeb70caf30e0995d
 		}
 		
 	}
