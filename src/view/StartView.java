@@ -20,7 +20,7 @@ public class StartView {
 			if (reply.equals("Q")) {
 				break;
 			}
-			ReviewController.run(reply);
+			//ReviewController.run(reply);
 		}
 		
 	}
