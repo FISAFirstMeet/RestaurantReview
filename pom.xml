@@ -27,11 +27,7 @@
 			<version>1.18.36</version>
 			<scope>provided</scope>
 		</dependency>
-<<<<<<< HEAD
-
-=======
-	
->>>>>>> e7f6fa80cb46858407f5319fbeb70caf30e0995d
+		
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -39,7 +35,6 @@
 			<version>4.13.2</version>
 			<scope>test</scope>
 		</dependency>
-<<<<<<< HEAD
 
 		<!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
 		<dependency>
@@ -48,14 +43,6 @@
 			<version>8.2.0</version>
 		</dependency>
 		
-		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.29</version>
-		</dependency>
 
-=======
->>>>>>> e7f6fa80cb46858407f5319fbeb70caf30e0995d
 	</dependencies>
 </project>
