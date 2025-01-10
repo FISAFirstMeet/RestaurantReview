@@ -17,7 +17,7 @@ public class ReviewController {
 				boolean check = checkDuplicated(input);
 				if (check) {
 					// 중복된 리뷰는 작성 불가해요~ UI로 던져
-					SuccessView.duplicated();
+					//SuccessView.duplicated();
 					return;
 				} 
 				ReviewDAO.createReview(input);
@@ -34,7 +34,7 @@ public class ReviewController {
 				deleteReview(reviewid);
 			}
 		} catch (Exception e) {
-			FailureView.printError("시스템 오류입니다.");
+			FailureView.FailRead();
 		}
 	}
 	
@@ -52,69 +52,89 @@ public class ReviewController {
 		try {
 			boolean ck = ReviewDAO.createReview(reviewDTO);
 			if (ck = true) {
-				SuccessView.Message("리뷰가 등록되었습니다.");
+				//SuccessView.Message("리뷰가 등록되었습니다.");
 			} else {
-				SuccessView.Message("리뷰 등록에 실패하였습니다.");
+				//SuccessView.Message("리뷰 등록에 실패하였습니다.");
 			}
 		} catch (Exception e) {
-			FailView.showError("금일 등록된 리뷰입니다.");
+			//FailView.showError("금일 등록된 리뷰입니다.");
 		}
 	}
 
 //R
 	public static void selectReview(String ck) {
-		try {
-			if (ck.equals("1")) {// 전체 리뷰 조회
-				ReviewDAO.allListReview();
-			} else if (ck.equals("2")) {// 별점 높은순 조회
-				ReviewDAO.topScoreReview();
-			} else if (ck.equals("3")) {// price 높은 순 조회
-				ReviewDAO.topPriceReview();
-			} else if (ck.equals("4")) {// 내가 쓴 리뷰 조회
+	    try {
+	        switch (ck) {
+	            case "1": // 전체 리뷰 조회
+	                ReviewDAO.getAllReviews();
+	                break;
 
-			} else if (ck.equals("5")) {// age 별 리뷰 조회
-				ArrayList<ReviewDTO> reviewDTOs = ReviewDAO.getReviewByAge(0);
-				SuccessView.ageRead(reviewDTOs);
-			} else if (ck.equals("6")) {// gender 별 조회
+	            case "2": // 별점 높은순 조회
+	                ReviewDAO.getReviewsByScoreDesc();
+	                break;
 
-			} else if (ck.equals("7")) {// category 별 조회
-				ReviewDAO.getReviewsByCategory(ck);
+	            case "3": // price 높은 순 조회
+	                ReviewDAO.getReviewsSortedByPriceDesc();
+	                break;
 
-			} else { // 20대 남성이 쓴 리뷰 조회
+	            case "4": // 내가 쓴 리뷰 조회
+	                String userId = "사용자 ID"; // 사용자 ID를 적절히 전달해야 함
+	                ReviewDAO.getMyReviews(userId);
+	                break;
 
-			}
-			SuccessView.Message("리뷰가 등록되었습니다.");
-		} catch (Exception e) {
-			FailureView.FailRead();
-		}
+	            case "5": // 연령대와 성별로 리뷰 조회
+	                String gender = "M"; // 성별 입력값 (예: "M" 또는 "F")
+	                int age = 30; // 연령 입력값 (예: 30)
+	                ReviewDAO.getReviewByAgeAndGender(gender, age);
+	                break;
+
+	            case "6": // gender 별 조회
+	                String genderForFilter = "F"; // 성별 입력값
+	                //ReviewDAO.getReviewsByGender(genderForFilter);
+	                break;
+
+	            case "7": // category 별 조회
+	                String category = "Electronics"; // 카테고리 입력값
+	                ReviewDAO.getReviewsByCategory(category);
+	                break;
+
+	            default:
+	                FailureView.FailRead();
+	                return;
+	        }
+	        //SuccessView.Message("리뷰가 등록되었습니다.");
+	    } catch (Exception e) {
+	        FailureView.FailRead();
+	    }
 	}
 
+	
 //U
 	public static void updateReview(String col,String setData) {
 		try {
 			boolean ck = ReviewDAO.createReview(col,setData);
 			if(ck=true) {
-				SuccessView.Message("리뷰가 수정되었습니다.");
-				ReviewDAO.allListReview();
+				//SuccessView.Message("리뷰가 수정되었습니다.");
+				ReviewDAO.getAllReviews();
 			}else {
-				SuccessView.Message("리뷰 수정에 실패하였습니다.");
+				//SuccessView.Message("리뷰 수정에 실패하였습니다.");
 			}
 		} catch (Exception e) {
-			FailView.showError("수정 실패 잠시후 다시 실행");
+			FailureView.FailRead();
 		}
 	}
 
 //D
-	public static void deleteReview(String reviewId) {
+	public static void deleteReview(int reviewId) {
 		try {
 			boolean ck = ReviewDAO.deleteReview(reviewId);
 			if (ck = true) {
 				SuccessView.delete();
 			} else {
-				SuccessView.Message("삭제할 리뷰가 없습니다.");
+				//SuccessView.Message("삭제할 리뷰가 없습니다.");
 			}
 		} catch (Exception e) {
-			FailureView.
+			FailureView.FailRead();
 		}
 	}
 }
