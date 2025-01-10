@@ -39,26 +39,4 @@ public class ReviewDAO {
 	
 	// D
 	
-	// 3
-	public static ArrayList<ReviewDTO> getReviewsSortedByPriceDesc() {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		ArrayList<ReviewDTO> reviews = null;
-		
-		try {
-			conn = DBUtil.getConnection();
-			pstmt = conn.prepareStatement("select * from review order by price desc");
-			rset = pstmt.executeQuery();
-			
-			reviews = new ArrayList<>();
-			while (rset.next()) {
-				reviews.add(ReviewDTO.builder())
-							.
-			}
-		} finally {
-			DBUtil.close(conn, pstmt, rset);
-		}
-		return reviews;
-	}
 }
