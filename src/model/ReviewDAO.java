@@ -16,6 +16,76 @@ public class ReviewDAO {
 	// C
 
 	// R
+	//1 전체 review
+	public static ArrayList<ReviewDTO> getAllReviews() throws SQLException{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<ReviewDTO> reviews = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			pstmt = conn.prepareStatement("select * from review");
+			rset = pstmt.executeQuery();
+
+			reviews = new ArrayList<>();
+			while (rset.next()) {
+				reviews.add(ReviewDTO.builder() 
+							.reviewId(rset.getInt(1))
+							.userId(rset.getString(2))
+							.age(rset.getInt(3))
+							.gender(Gender.valueOf(rset.getString(4)))
+							.restaurantName(rset.getString(5))
+							.category(Category.valueOf(rset.getString(6)))
+							.menu(rset.getString(7))
+							.price(rset.getInt(8))
+							.content(rset.getString(9))
+							.score(rset.getDouble(10))
+							.date(rset.getTimestamp(11).toLocalDateTime())
+							.build());
+			}
+		} finally {
+			DBUtil.close(conn, pstmt, rset);
+		}
+		
+		return reviews;
+	}
+	
+	//2 별점 높은 순
+	public static ArrayList<ReviewDTO> getReviewsByScoreDesc(double score) throws SQLException{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<ReviewDTO> reviews = null;
+
+		try {
+			conn = DBUtil.getConnection();
+			pstmt = conn.prepareStatement("select * from review where score=? order by score decs");
+			pstmt.setDouble(1, score);
+			rset = pstmt.executeQuery();
+
+			reviews = new ArrayList<>();
+			while (rset.next()) {
+				reviews.add(ReviewDTO.builder() 
+							.reviewId(rset.getInt(1))
+							.userId(rset.getString(2))
+							.age(rset.getInt(3))
+							.gender(Gender.valueOf(rset.getString(4)))
+							.restaurantName(rset.getString(5))
+							.category(Category.valueOf(rset.getString(6)))
+							.menu(rset.getString(7))
+							.price(rset.getInt(8))
+							.content(rset.getString(9))
+							.score(rset.getDouble(10))
+							.date(rset.getTimestamp(11).toLocalDateTime())
+							.build());
+			}
+		} finally {
+			DBUtil.close(conn, pstmt, rset);
+		}
+		
+		return reviews;
+	}
 
 	// 3
 	public static ArrayList<ReviewDTO> getReviewsSortedByPriceDesc() throws SQLException {
@@ -48,6 +118,7 @@ public class ReviewDAO {
 		} finally {
 			DBUtil.close(conn, pstmt, rset);
 		}
+		
 		return reviews;
 	}
 
@@ -139,7 +210,7 @@ public class ReviewDAO {
 			
 			conn = DBUtil.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, gender); // gender는 String 타입으로 가정
+			pstmt.setString(1, gender);
 			pstmt.setInt(2, startAge);
 			pstmt.setInt(3, endAge);
 			rset = pstmt.executeQuery();
