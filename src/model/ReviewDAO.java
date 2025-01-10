@@ -6,8 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import model.domain.Category;
+import model.domain.Gender;
 import model.dto.ReviewDTO;
-import probono.model.dto.ActivistDTO;
+import util.DBUtil;
 
 public class ReviewDAO {
 	
@@ -16,7 +18,7 @@ public class ReviewDAO {
 	// R
 
 	// 3
-	public static ArrayList<ReviewDTO> getReviewsSortedByPriceDesc() {
+	public static ArrayList<ReviewDTO> getReviewsSortedByPriceDesc() throws SQLException {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -29,13 +31,13 @@ public class ReviewDAO {
 			
 			reviews = new ArrayList<>();
 			while (rset.next()) {
-				reviews.add(ReviewDTO.builder()
+				reviews.add(ReviewDTO.builder() 
 							.reviewId(rset.getInt(1))
 							.userId(rset.getString(2))
 							.age(rset.getInt(3))
-							.gender(rset.getString(4))
+							.gender(Gender.valueOf(rset.getString(4)))
 							.restaurantName(rset.getString(5))
-							.category(rset.getString(6))
+							.category(Category.valueOf(rset.getString(6)))
 							.menu(rset.getString(7))
 							.price(rset.getInt(8))
 							.content(rset.getString(9))
@@ -48,9 +50,9 @@ public class ReviewDAO {
 		}
 		return reviews;
 	}
-	
+
 	// 4
-	public static ArrayList<ReviewDTO> getMyReviews(String userId) {
+	public static ArrayList<ReviewDTO> getMyReviews(String userId) throws SQLException {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -68,9 +70,9 @@ public class ReviewDAO {
 							.reviewId(rset.getInt(1))
 							.userId(rset.getString(2))
 							.age(rset.getInt(3))
-							.gender(rset.getString(4))
+							.gender(Gender.valueOf(rset.getString(4)))
 							.restaurantName(rset.getString(5))
-							.category(rset.getString(6))
+							.category(Category.valueOf(rset.getString(6)))
 							.menu(rset.getString(7))
 							.price(rset.getInt(8))
 							.content(rset.getString(9))
