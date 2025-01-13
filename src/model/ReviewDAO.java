@@ -15,7 +15,11 @@ import util.DBUtil;
 
 public class ReviewDAO {
 	
+<<<<<<< Updated upstream
 	private static final UserInfo userInfo = UserInfo.getInstance();
+=======
+	private static UserInfo userInfo = UserInfo.getInstance();
+>>>>>>> Stashed changes
 	
 	// C
 	// 리뷰 등록
@@ -26,9 +30,9 @@ public class ReviewDAO {
 			try {
 				con = DBUtil.getConnection();
 				pstmt = con.prepareStatement("insert into review values(?,?,?,?,?,?,?,?,?,?");
-				pstmt.setString(1, reviewDTO.getUserId());
-				pstmt.setInt(2, reviewDTO.getAge());
-				pstmt.setString(3, reviewDTO.getGender().name());
+				pstmt.setString(1, userInfo.getUserId());
+				pstmt.setInt(2, userInfo.getAge());
+				pstmt.setString(3, userInfo.getGender().name());
 				pstmt.setString(4, reviewDTO.getRestaurantName());
 				pstmt.setString(5, reviewDTO.getCategory().name());
 				pstmt.setString(6, reviewDTO.getMenu());

@@ -2,6 +2,7 @@ package view;
 
 import model.domain.Category;
 import model.domain.Gender;
+import model.domain.UserInfo;
 import model.dto.ReviewDTO;
 
 import java.util.Scanner;
@@ -10,6 +11,8 @@ public class OperationView {
 
    private static final Scanner scanner = new Scanner(System.in);
 
+   private static UserInfo userInfo = UserInfo.getInstance();
+   
    public static Category reviewsByCategoryView() {
       return null;
    }
@@ -33,8 +36,37 @@ public class OperationView {
    
    // AgeAndGender는 이미 존재하는 Age, Gender 두번 부르기
    
-   public static ReviewDTO createView() {
-      return null;
+   public static ReviewDTO createReview() {
+	   //생성할 리뷰에 대한 정보 입력 받기
+	   //기입력 정보 : userid,age,gender
+	   //미입력 : restaurant_name,category,menu,price,content,score
+	   System.out.print("음식점 이름을 입력해주세요 : "); 
+	   String restaurantName = scanner.nextLine();
+	   
+	   System.out.print("카테고리를 입력해주세요 : "); 
+	   String category = scanner.nextLine();
+
+	   System.out.print("메뉴를 입력해주세요 : "); 
+	   String menu = scanner.nextLine();
+
+	   System.out.print("가격을 입력해주세요 : "); 
+	   int price = scanner.nextInt();
+
+	   System.out.print("내용을 입력해주세요 : "); 
+	   String content = scanner.nextLine();
+
+	   System.out.print("별점을 입력해주세요(0~5.0 사이) : "); 
+	   double score = scanner.nextDouble();
+	   
+	   ReviewDTO review = ReviewDTO.builder()
+			   				.restaurantName(restaurantName)
+			   				.category(Category.valueOf(category))
+			   				.menu(menu)
+			   				.price(price)
+			   				.content(content)
+			   				.score(score).build();
+	   
+      return review;
    }
    
    public static int readReviewIdView() {
