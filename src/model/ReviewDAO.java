@@ -36,9 +36,7 @@ public class ReviewDAO {
 				pstmt.setInt(7, reviewDTO.getPrice());
 				pstmt.setString(8, reviewDTO.getContent());
 				pstmt.setDouble(9, reviewDTO.getScore());
-				System.out.println("쿼리생성함");
 				int result = pstmt.executeUpdate();
-				System.out.println("execute 성공");
 				if (result == 1) {
 					System.out.println("return true");
 					return true;
@@ -121,7 +119,6 @@ public class ReviewDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset=null;
-		System.out.println("checkReview 들어왔다.");
 		try {
 			conn = DBUtil.getConnection();
 			pstmt = conn.prepareStatement("select * from review where user_id=? and restaurant_name=? and menu=?");
