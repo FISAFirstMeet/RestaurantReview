@@ -24,49 +24,59 @@ DB는 VirtualBox로 가상화 된 Ubuntu 내에 MySQL과 소통
 
 ### 데이터 모델링
 
-[E_R 다이어그램 사진]
+![image](https://github.com/user-attachments/assets/16a3964f-fd88-43ed-a4e7-04129480d662)
+
 
 맛집 리뷰를 담는 테이블
 
-review_id : 각 리뷰별 PK
+- review_id : 각 리뷰별 PK
 
-user_id : 유저의 개인 ID
+- user_id : 유저의 개인 ID
 
-gender : 성별. Enum type으로 여자, 남자 존재
+- gender : 성별. Enum type으로 여자, 남자 존재
 
-restaurant_name :
+- restaurant_name : 음식점 이름
 
-category : 음식의 카테고리. Enum type으로 한식, 중식, 양식, 일식, 기타 존재
+- category : 음식의 카테고리. Enum type으로 한식, 중식, 양식, 일식, 기타 존재
 
-menu : 메뉴 이름
+- menu : 메뉴 이름
 
-price : 메뉴 가격
+- price : 메뉴 가격
 
-content : 리뷰 한줄평
+- content : 리뷰 한줄평
 
-score : 별점 (0-5.0)
+- score : 별점 (0-5.0)
 
-date : 리뷰 입력한 날짜
+- date : 리뷰 입력한 날짜
 
 ## 개발
 
 ### 기술 스택
 
 - **언어**: Java 17
+
 - **라이브러리**: JDBC, Lombok
+  
 - **빌드 도구**: Maven
+  
 - **DB**: MySQL
+  
 - **DB 운영 환경**: VirtualBox - Ubuntu
+  
 - **버전 관리**: Git, GitHub
+  
 - **협업 도구**: Slack
+  
 - **테스트 프레임워크**: JUnit
 
 ### 주요 기능
 
 - 개인 정보 입력
     - User ID, 나이, 성별 입력
+      
 - 리뷰 작성
     - 이름, 음식 카테고리, 메뉴, 가격, 내용, 별점 입력
+      
 - 리뷰 조회
     - 전체 리뷰
     - 평점 높은 순
@@ -76,24 +86,18 @@ date : 리뷰 입력한 날짜
     - 성별 별
     - 연령대 / 성별 별
     - 음식 카테고리 별
+      
 - 리뷰 수정
+  
 - 리뷰 삭제
 
-### 코드 구조
+### 패키지 구조
 
-디렉토리 구조 및 주요 파일 설명.
+![image](https://github.com/user-attachments/assets/c74c5413-2d8f-4555-8fe3-57a458d2e59f)
+
+
 
 ### MVC 패턴 구조
-
-## 테스트
-
-### 테스트 전략
-
-테스트 계획 및 접근 방식.
-
-### 테스트 결과
-
-테스트 수행 결과 및 분석.
 
 ## 고찰
 
@@ -112,3 +116,11 @@ date : 리뷰 입력한 날짜
 프로젝트를 진행하며 느낀 개선사항과 학습 내용.
 
 ## 깃 커밋 규칙
+- **feat**: 새로운 기능 추가
+- **fix**: 버그 수정
+- **docs**: 문서 수정
+- **style**: 코드 스타일 수정 (공백, 세미콜론 등)
+- **refactor**: 코드 리팩토링
+- **test**: 테스트 추가 또는 수정
+- **chore**: 기타 변경 (빌드 작업, 패키지 업데이트 등)
+- **perf**: 성능 향상
