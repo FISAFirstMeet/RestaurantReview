@@ -18,9 +18,19 @@
 
 ## 설계
 
-### 아키텍처 다이어그램
+- 사람들이 리뷰를 보고 원하는 정보를 얻을 수 있도록 필요한 데이터를 컬럼으로 채택
+    - 레스토랑 정보
+    - 음식 정보
+    - 평가
 
-DB는 VirtualBox로 가상화 된 Ubuntu 내에 MySQL과 소통
+- 최대한 MVC 패턴을 지키며 프로젝트를 수행, 각 게층에 대한 확실한 역할을 부여하고 SRP를 준수
+    - Model: DB에 직접적으로 접근하는 역할
+    - View: 사용자와 직접적으로 소통하는 역할, 사용자에게 필요한 정보를 제공하고 사용자가 필요한 정보 입력
+    - Controller: Model과 View 사이에서 데이터를 전달하는 역할
+
+- 사용자의 정보를 보관한 객체를 전역적으로 선언하여 모든 클래스에서 사용 가능하게 함
+    - Singleton Pattern
+ 
 
 ### 데이터 모델링
 
@@ -99,7 +109,29 @@ DB는 VirtualBox로 가상화 된 Ubuntu 내에 MySQL과 소통
 
 ### MVC 패턴 구조
 
+![mvc2](https://github.com/user-attachments/assets/bba4c68c-3bde-405b-b4f6-5e7093a0a817)
+
+
+
 ## 고찰
+
+- 그동안 DB연결 시 IDE와 같은 편리한 Tool을 사용해왔었는데 권한 부여부터 차근차근 단계를 밟아가는 경험을 했다. 인프라를 다루는 것이 쉽지 않다고 느꼈다.
+- MVC 패턴을 신경
+
+##  트러블 슈팅
+
+### DB연결
+- mysql 연결과정에서 권한설정 문제
+    - GRANT ALL PRIVILEGES ON TO 문법으로 권한 부여하여 해결
+ 
+### 프로젝트 실행 과정
+
+- Enum Type 사용으로 인한 문제 발생
+    - Category, Gender Enum
+  
+- Scanner 클래스의 nextLine() 사용 시 문제 발생
+    - 
+
 
 ### 성과
 
