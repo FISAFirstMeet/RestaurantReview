@@ -116,17 +116,29 @@ public class SuccessView {
 	}
 	
 	public static void create(boolean isOk) {
-		System.out.println("[리뷰가 작성되었습니다.]");
+		if (isOk) {
+			System.out.println("[리뷰가 작성되었습니다.]");
+		} else {
+			System.out.println("[리뷰가 정상적으로 작성되지 않았습니다.]");
+		}
 		isContinue();
 	}
 
 	public static void update(boolean isOk) {
-		System.out.println("[리뷰가 업데이트 되었습니다.]");
+		if (isOk) {
+			System.out.println("[리뷰가 업데이트 되었습니다.]");
+		} else {
+			System.out.println("[리뷰가 정상적으로 업데이트되지 않았습니다.]");
+		}
 		isContinue();
 	}
 	
 	public static void delete(boolean isOk) {
-		System.out.println("[리뷰가 삭제되었습니다.]");
+		if (isOk) {
+			System.out.println("[리뷰가 삭제되었습니다.]");
+		} else {
+			System.out.println("[리뷰가 정상적으로 삭제되지 않았습니다.]");
+		}
 		isContinue();
 	}
 	

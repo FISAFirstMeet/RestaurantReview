@@ -125,7 +125,7 @@ public class OperationView {
 		System.out.printf("\n %-8s\t | ", "리뷰 ID");
 		System.out.printf("%-21s\t | ", "레스토랑 이름");
 		System.out.printf("%-20s\t | ", "메뉴");
-		System.out.printf("%s", "리뷰 내용");
+		System.out.printf("%s\n", "리뷰 내용");
 		System.out.println("-".repeat(84));
 
 		for (ReviewDTO reviewDTO : reviewDTOs) {

@@ -37,14 +37,16 @@ public class ReviewController {
         	int reviewId = OperationView.readReviewIdView();
             String newContent = OperationView.readContentView();
             
-            ReviewDAO.updateContent(reviewId, newContent);
+            boolean check = ReviewDAO.updateContent(reviewId, newContent);
+            SuccessView.update(check);
          } else { // 리뷰 삭제
 				ArrayList<ReviewDTO> myReviews = ReviewDAO.getMyReviews();
 				OperationView.selectMyReview(myReviews);
 
-				int reviewId = OperationView.readReviewIdView();
+				int reviewId = OperationView.deleteView();
 
-				ReviewDAO.deleteReview(reviewId);
+				boolean check = ReviewDAO.deleteReview(reviewId);
+				SuccessView.delete(check);
          }
       } catch (Exception e) {
          FailureView.FailRead(e);
