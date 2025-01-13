@@ -118,13 +118,13 @@ public class SuccessView {
 	
 	
 	
-	@Test
-	public void test() {
-		ArrayList<ReviewDTO> r = new ArrayList<>();
-		r.add(ReviewDTO.builder().restaurantName("달인대보 칼숙수집 달인대보 칼숙수집").category(Category.KOREAN).menu("안녕").price(13000).score(4.5).age(24).content("fajkjghkaghkjahgkgajagkjhwaergkjbwagk").build());
-		r.add(ReviewDTO.builder().restaurantName("aaa").category(Category.KOREAN).menu("dd").price(13000).score(4.5).content("sgggkjhwaergkjbwagk").build());
-		r.add(ReviewDTO.builder().restaurantName("aaa").category(Category.KOREAN).menu("dd").price(13000).score(4.5).content("u6ghkaghkjahgkgajagkjhwaergkjbwagk").build());
-		r.add(ReviewDTO.builder().restaurantName("aaa").category(Category.KOREAN).menu("dd").price(13000).score(4.5).content("2t4ghkjahgkgajagkjhwaergkjbwagk").build());
-		ageRead(r);
-	}
+//	@Test
+//	public void test() {
+//		ArrayList<ReviewDTO> r = new ArrayList<>();
+//		r.add(ReviewDTO.builder().restaurantName("달인대보 칼숙수집 달인대보 칼숙수집").category(Category.KOREAN).menu("안녕").price(13000).score(4.5).age(24).content("fajkjghkaghkjahgkgajagkjhwaergkjbwagk").build());
+//		r.add(ReviewDTO.builder().restaurantName("aaa").category(Category.KOREAN).menu("dd").price(13000).score(4.5).content("sgggkjhwaergkjbwagk").build());
+//		r.add(ReviewDTO.builder().restaurantName("aaa").category(Category.KOREAN).menu("dd").price(13000).score(4.5).content("u6ghkaghkjahgkgajagkjhwaergkjbwagk").build());
+//		r.add(ReviewDTO.builder().restaurantName("aaa").category(Category.KOREAN).menu("dd").price(13000).score(4.5).content("2t4ghkjahgkgajagkjhwaergkjbwagk").build());
+//		ageRead(r);
+//	}
 }
