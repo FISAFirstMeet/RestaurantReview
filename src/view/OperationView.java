@@ -57,7 +57,7 @@ public class OperationView {
 	   int price = scanner.nextInt();
 
 	   System.out.print("내용을 입력해주세요 : "); 
-	   String content = scanner.nextLine();
+	   String content = scanner.next();
 
 	   System.out.print("별점을 입력해주세요(0~5.0 사이) : "); 
 	   double score = scanner.nextDouble();
@@ -119,7 +119,8 @@ public class OperationView {
       sb.append("5. 연령대별 조회\n");
       sb.append("6. 성별별 조회\n");
       sb.append("7. 음식 카테고리별 조회\n");
-
+      	
+      System.out.println(sb.toString());
       String input = scanner.next().trim();
       return input;
    }
