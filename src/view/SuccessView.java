@@ -95,6 +95,12 @@ public class SuccessView {
 		printReview(reviewDTOs);
 	}
 	
+	public static void ageAndGenderRead(ArrayList<ReviewDTO> reviewDTOs) {
+		System.out.println("[나이대 / 성별 별 리뷰]");
+		System.out.printf("[나이대 : %d / 성별 : %s]\n", reviewDTOs.get(0).getAge() / 10 * 10, reviewDTOs.get(0).getGender().getKorean());
+		printReview(reviewDTOs);
+	}
+	
 	public static void categoryRead(ArrayList<ReviewDTO> reviewDTOs) {
 		System.out.println("[카테고리 별 리뷰]");
 		System.out.printf("[카테고리 : %s]\n", reviewDTOs.get(0).getCategory().getKorean());
