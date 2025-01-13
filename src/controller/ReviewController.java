@@ -75,8 +75,8 @@ public class ReviewController {
                break;
 
                case "5": // 연령대와 성별로 리뷰 조회
-                   String gender = "M"; // 성별 입력값 (예: "M" 또는 "F")
-                   int age = 30; // 연령 입력값 (예: 30)
+                   String gender = OperationView.reviewByGenderView().getKorean(); // 성별 입력값 (예: "M" 또는 "F")
+                   int age = OperationView.reviewByAgeView(); // 연령 입력값 (예: 30)
                    ReviewDAO.getReviewByAgeAndGender(gender, age);
                    break;
 
@@ -86,7 +86,7 @@ public class ReviewController {
                    break;
 
                case "7": // category 별 조회
-                   String category = "Electronics"; // 카테고리 입력값
+                   String category = OperationView.reviewsByCategoryView().getKorean(); // 카테고리 입력값
                    ReviewDAO.getReviewsByCategory(category);
                    break;
 
