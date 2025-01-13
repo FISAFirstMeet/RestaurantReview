@@ -29,16 +29,19 @@ public class ReviewController {
             selectReview(function);
          } else if (reply.equals("3")) { // 리뷰 수정
         	ArrayList<ReviewDTO> myReviews = ReviewDAO.getMyReviews();
-        	SuccessView.myReviewRead(myReviews);
+        	OperationView.selectMyReview(myReviews);
         	
         	int reviewId = OperationView.readReviewIdView();
             String newContent = OperationView.readContentView();
             
             ReviewDAO.updateContent(reviewId, newContent);
          } else { // 리뷰 삭제
-        	 // 리뷰보여주기
-            String reviewid = OperateView.getReviewIdView(userid);
-            deleteReview(reviewid);
+				ArrayList<ReviewDTO> myReviews = ReviewDAO.getMyReviews();
+				OperationView.selectMyReview(myReviews);
+
+				int reviewId = OperationView.readReviewIdView();
+
+				ReviewDAO.deleteReview(reviewId);
          }
       } catch (Exception e) {
          FailureView.FailRead();

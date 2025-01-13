@@ -2,8 +2,10 @@ package view;
 
 import model.domain.Category;
 import model.domain.Gender;
+import model.domain.UserInfo;
 import model.dto.ReviewDTO;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class OperationView {
@@ -48,8 +50,29 @@ public class OperationView {
    }
 
    public static int deleteView() {
-      return 0;
+      System.out.println("삭제할 리뷰 번호를 입력해주세요.");
+      return scanner.nextInt();
    }
+   
+   /**
+    * 내 리뷰 리스트 보여줌
+    */
+	public static void selectMyReview(ArrayList<ReviewDTO> reviewDTOs) {
+		System.out.println("[내 리뷰]");
+		// 리뷰 출력
+		System.out.printf("\n %-8s\t | ", "리뷰 ID");
+		System.out.printf("%-21s\t | ", "레스토랑 이름");
+		System.out.printf("%-20s\t | ", "메뉴");
+		System.out.printf("%s", "리뷰 내용");
+		System.out.println("-".repeat(84));
+
+		for (ReviewDTO reviewDTO : reviewDTOs) {
+			System.out.printf(" %-8d\t | ", reviewDTO.getReviewId());
+			System.out.printf("%-21s\t | ", reviewDTO.getRestaurantName());
+			System.out.printf("%-20s\t | ", reviewDTO.getMenu());
+			System.out.printf("%s\n", reviewDTO.getContent());
+		}
+	}
 
    public static String readSearchFunctionView() {
       StringBuilder sb = new StringBuilder();
