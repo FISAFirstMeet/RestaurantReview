@@ -15,10 +15,10 @@ import util.DBUtil;
 public class ReviewDAO {
 	// C
 	// 리뷰 등록
-		public static boolean createReview(ReviewDTO reviewDTO) throws SQLException {
-			Connection con = null;
-			PreparedStatement pstmt = null;
-
+	public static boolean createReview(ReviewDTO reviewDTO) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
 			try {
 				con = DBUtil.getConnection();
 				pstmt = con.prepareStatement("insert into review values(?,?,?,?,?,?,?,?,?,?");
@@ -80,7 +80,7 @@ public class ReviewDAO {
 	}
 	
 	//2 별점 높은 순
-	public static ArrayList<ReviewDTO> getReviewsByScoreDesc(double score) throws SQLException{
+	public static ArrayList<ReviewDTO> getReviewsByScoreDesc() throws SQLException{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -88,8 +88,7 @@ public class ReviewDAO {
 
 		try {
 			conn = DBUtil.getConnection();
-			pstmt = conn.prepareStatement("select * from review where score=? order by score decs");
-			pstmt.setDouble(1, score);
+			pstmt = conn.prepareStatement("select * from review order by score desc");
 			rset = pstmt.executeQuery();
 
 			reviews = new ArrayList<>();
@@ -138,7 +137,7 @@ public class ReviewDAO {
 		}
 		return false;
 	}
-	
+
 	// 3
 	public static ArrayList<ReviewDTO> getReviewsSortedByPriceDesc() throws SQLException {
 		Connection conn = null;
@@ -369,7 +368,7 @@ public class ReviewDAO {
 	}
 
 	// D
-	public static boolean deleteContent(int reviewId) throws SQLException {
+	public static boolean deleteReview(int reviewId) throws SQLException {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 
