@@ -9,10 +9,14 @@ import java.util.ArrayList;
 
 import model.domain.Category;
 import model.domain.Gender;
+import model.domain.UserInfo;
 import model.dto.ReviewDTO;
 import util.DBUtil;
 
 public class ReviewDAO {
+	
+	private static final UserInfo userInfo = UserInfo.getInstance();
+	
 	// C
 	// 리뷰 등록
 	public static boolean createReview(ReviewDTO reviewDTO) throws SQLException {
@@ -174,7 +178,7 @@ public class ReviewDAO {
 	}
 
 	// 4
-	public static ArrayList<ReviewDTO> getMyReviews(String userId) throws SQLException {
+	public static ArrayList<ReviewDTO> getMyReviews() throws SQLException {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -183,7 +187,7 @@ public class ReviewDAO {
 		try {
 			conn = DBUtil.getConnection();
 			pstmt = conn.prepareStatement("select * from review where user_id=?");
-			pstmt.setString(1, userId);
+			pstmt.setString(1, userInfo.getUserId());
 			rset = pstmt.executeQuery();
 
 			reviews = new ArrayList<>();

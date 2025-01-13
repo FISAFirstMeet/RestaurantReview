@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import model.ReviewDAO;
 import model.domain.UserInfo;
@@ -27,10 +28,13 @@ public class ReviewController {
             String function = OperationView.readSearchFunctionView();
             selectReview(function);
          } else if (reply.equals("3")) { // 리뷰 수정
-            String col = OperationView.colReview();
-            String setdata = OperationView.setDataReview();
-
-            updateReview(col,setdata);
+        	ArrayList<ReviewDTO> myReviews = ReviewDAO.getMyReviews();
+        	SuccessView.myReviewRead(myReviews);
+        	
+        	int reviewId = OperationView.readReviewIdView();
+            String newContent = OperationView.readContentView();
+            
+            ReviewDAO.updateContent(reviewId, newContent);
          } else { // 리뷰 삭제
         	 // 리뷰보여주기
             String reviewid = OperateView.getReviewIdView(userid);
@@ -80,8 +84,7 @@ public class ReviewController {
                    break;
 
                case "4": // 내가 쓴 리뷰 조회
-                   String userId = UserInfo.getInstance().getUserId(); // 사용자 ID를 적절히 전달해야 함
-                   result = ReviewDAO.getMyReviews(userId);
+                   result = ReviewDAO.getMyReviews();
                    SuccessView.myReviewRead(result);
                break;
 
