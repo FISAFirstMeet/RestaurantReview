@@ -15,11 +15,7 @@ import util.DBUtil;
 
 public class ReviewDAO {
 	
-<<<<<<< Updated upstream
 	private static final UserInfo userInfo = UserInfo.getInstance();
-=======
-	private static UserInfo userInfo = UserInfo.getInstance();
->>>>>>> Stashed changes
 	
 	// C
 	// 리뷰 등록
@@ -121,8 +117,8 @@ public class ReviewDAO {
 		
 		return reviews;
 	}
-		
-	// R
+
+	//R
 	public static boolean checkReview(ReviewDTO reviewDTO) throws SQLException{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
