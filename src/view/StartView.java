@@ -41,18 +41,17 @@ public class StartView {
 		sb.append("안녕하세요. 맛집 리뷰 프로그램입니다.\n")
 			.append("아이디를 입력해주세요.");
 		String str = sb.toString();
-		System.out.println(str);
 		String userId = scanner.next();
 		
 		System.out.println("만 나이를 입력해주세요.");
 		int age = scanner.nextInt();
 		
-		System.out.println("성별을 입력해주세요. (남성 or 여성)");
+		System.out.println("성별을 입력해주세요. (1: 남성 or 2: 여성)");
 		String input = scanner.next();
 		Gender gender = null;
-		if (input.equals("남성")) {
+		if (input.equals("1")) {
 			gender = Gender.MALE;
-		} else if (input.equals("여성")) {
+		} else if (input.equals("2")) {
 			gender = Gender.FEMALE;
 		}
 		
