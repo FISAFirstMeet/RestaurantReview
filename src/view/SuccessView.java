@@ -58,7 +58,6 @@ public class SuccessView {
 	private static void isContinue() {
 		System.out.print("[계속하려면 Enter키를 눌러주세요]");
 		scanner.nextLine();
-		scanner.close();
 	}
 	
 	public static void allReviewRead(ArrayList<ReviewDTO> reviewDTOs) {
@@ -72,7 +71,7 @@ public class SuccessView {
 	}
 	
 	public static void topPriceRead(ArrayList<ReviewDTO> reviewDTOs) {
-		System.out.println("[가격 높은 순]");
+		System.out.println("[가격 낮은 순]");
 		printReview(reviewDTOs);
 	}
 
