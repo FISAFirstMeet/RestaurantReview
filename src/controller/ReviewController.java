@@ -30,16 +30,19 @@ public class ReviewController {
             selectReview(function);
          } else if (reply.equals("3")) { // 리뷰 수정
         	ArrayList<ReviewDTO> myReviews = ReviewDAO.getMyReviews();
-        	SuccessView.myReviewRead(myReviews);
+        	OperationView.selectMyReview(myReviews);
         	
         	int reviewId = OperationView.readReviewIdView();
             String newContent = OperationView.readContentView();
             
             ReviewDAO.updateContent(reviewId, newContent);
          } else { // 리뷰 삭제
-        	 // 리뷰보여주기
-            String reviewid = OperationView.getReviewIdView(userid);
-            deleteReview(reviewid);
+				ArrayList<ReviewDTO> myReviews = ReviewDAO.getMyReviews();
+				OperationView.selectMyReview(myReviews);
+
+				int reviewId = OperationView.readReviewIdView();
+
+				ReviewDAO.deleteReview(reviewId);
          }
       } catch (Exception e) {
          FailureView.FailRead();
@@ -98,36 +101,5 @@ public class ReviewController {
        } catch (Exception e) {
            FailureView.FailRead();
        }
-   }
-
-
-//U
-   public static void updateReview(String col,String setData) {
-      try {
-         boolean ck = ReviewDAO.createReview(col,setData);
-         if(ck=true) {
-            //SuccessView.Message("리뷰가 수정되었습니다.");
-            ReviewDAO.getAllReviews();
-         }else {
-            //SuccessView.Message("리뷰 수정에 실패하였습니다.");
-         }
-      } catch (Exception e) {
-         FailureView.FailRead();
-      }
-   }
-
-//D
-   public static void deleteReview(int reviewId) {
-      try {
-         boolean ck = ReviewDAO.deleteReview(reviewId);
-         if (ck = true) {
-            SuccessView.delete();
-         }
-         else {
-            //SuccessView.Message("삭제할 리뷰가 없습니다.");
-         }
-      } catch (Exception e) {
-         FailureView.FailRead();
-      }
    }
 }
