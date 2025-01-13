@@ -14,13 +14,22 @@ public class OperationView {
       return null;
    }
    
-   public static int reviewByAgeView() {
-      return 0;
-   }
-   
-   public static Gender reviewByGenderView() {
-      return null;
-   }
+	public static int reviewByAgeView() {
+		System.out.print("검색할 나이를 입력해 주세요 > ");
+		return scanner.nextInt();
+	}
+
+	public static Gender reviewByGenderView() {
+		System.out.print("성별을 선택해 주세요. (숫자로 입력)\n1. 여자\n2. 남자\n> ");
+		switch (scanner.nextInt()) {
+		case 1:
+			return Gender.FEMALE;
+		case 2:
+			return Gender.MALE;
+		default:
+			return null;
+		}
+	}
    
    // AgeAndGender는 이미 존재하는 Age, Gender 두번 부르기
    
