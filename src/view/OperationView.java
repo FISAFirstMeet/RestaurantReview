@@ -14,7 +14,10 @@ public class OperationView {
    private static UserInfo userInfo = UserInfo.getInstance();
    
    public static Category reviewsByCategoryView() {
-      return null;
+	  String input = scanner.nextLine();
+	  Category category = Category.valueOf(input);
+      
+	  return category;
    }
    
 	public static int reviewByAgeView() {
