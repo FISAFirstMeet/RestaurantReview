@@ -17,13 +17,14 @@ public class ReviewController {
          if (reply.equals("1")) { // 리뷰 등록
             // 리뷰 등록 ov 호출
             ReviewDTO input = OperationView.createReview();
-            boolean check = checkDuplicated(input);
-            if (check) {
+            boolean duplicate = checkDuplicated(input);
+            if (duplicate) { //true = 중복 
                // 중복된 리뷰는 작성 불가해요~ UI로 던져
                //SuccessView.duplicated();
                return;
             }
-            ReviewDAO.createReview(input);
+            boolean check = ReviewDAO.createReview(input);
+            SuccessView.create(check);
          } else if (reply.equals("2")) { // 리뷰 조회
             String function = OperationView.readSearchFunctionView();
             selectReview(function);
@@ -52,21 +53,6 @@ public class ReviewController {
       // 중복 처리
       // 같은 userId가 같은 날 같은 음식점 같은 음식을 먹으면?
       return ReviewDAO.checkReview(input);
-   }
-
-//C
-   // 생성
-   public static void createReview(ReviewDTO reviewDTO) {
-      try {
-         boolean ck = ReviewDAO.createReview(reviewDTO);
-         if (ck = true) {
-            //SuccessView.Message("리뷰가 등록되었습니다.");
-         } else {
-            //SuccessView.Message("리뷰 등록에 실패하였습니다.");
-         }
-      } catch (Exception e) {
-         //FailView.showError("금일 등록된 리뷰입니다.");
-      }
    }
 
 //R
@@ -115,35 +101,5 @@ public class ReviewController {
        } catch (Exception e) {
            FailureView.FailRead();
        }
-   }
-
-
-//U
-   public static void updateReview(String col,String setData) {
-      try {
-         boolean ck = ReviewDAO.createReview(col,setData);
-         if(ck=true) {
-            //SuccessView.Message("리뷰가 수정되었습니다.");
-            ReviewDAO.getAllReviews();
-         }else {
-            //SuccessView.Message("리뷰 수정에 실패하였습니다.");
-         }
-      } catch (Exception e) {
-         FailureView.FailRead();
-      }
-   }
-
-//D
-   public static void deleteReview(int reviewId) {
-      try {
-         boolean ck = ReviewDAO.deleteReview(reviewId);
-         if (ck = true) {
-            SuccessView.delete();
-         } else {
-            //SuccessView.Message("삭제할 리뷰가 없습니다.");
-         }
-      } catch (Exception e) {
-         FailureView.FailRead();
-      }
    }
 }
