@@ -20,13 +20,13 @@ public class ReviewController {
             // 리뷰 등록 ov 호출
             ReviewDTO input = OperationView.createReview();
             boolean duplicate = checkDuplicated(input);
-            if (duplicate) { //true = 중복 
-               // 중복된 리뷰는 작성 불가해요~ UI로 던져
-               //SuccessView.duplicated();
-               return;
+            if(duplicate) { //true면 중복
+            		SuccessView.duplicated(duplicate);
             }
-            boolean check = ReviewDAO.createReview(input);
-            SuccessView.create(check);
+            else {
+            	boolean check = ReviewDAO.createReview(input);
+            	SuccessView.create(check);
+            }
          } else if (reply.equals("2")) { // 리뷰 조회
             String function = OperationView.readSearchFunctionView();
             selectReview(function);

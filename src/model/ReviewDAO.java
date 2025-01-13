@@ -127,7 +127,7 @@ public class ReviewDAO {
 			pstmt.setString(3, reviewDTO.getMenu());
 			
 			rset = pstmt.executeQuery();
-			
+			rset.next();
 			if (rset.getRow() >= 1) {
 				return true;
 			}

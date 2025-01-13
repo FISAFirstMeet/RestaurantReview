@@ -123,6 +123,12 @@ public class SuccessView {
 		}
 		isContinue();
 	}
+	public static void duplicated(boolean isOk) {
+		if(isOk) {
+			System.out.println("[금일 등록된 리뷰가 있습니다.]\n[같은 식당은 하루에 1개의 리뷰 등록만 가능합니다.]");
+		}
+		isContinue();
+	}
 
 	public static void update(boolean isOk) {
 		if (isOk) {
