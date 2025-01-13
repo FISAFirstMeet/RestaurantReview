@@ -15,10 +15,21 @@ public class OperationView {
    private static UserInfo userInfo = UserInfo.getInstance();
    
    public static Category reviewsByCategoryView() {
-	  String input = scanner.nextLine();
-	  Category category = Category.valueOf(input);
-      
-	  return category;
+	  System.out.println("카테고리를 입력해주세요.(숫자로 입력)\n 1. 한식\n 2. 일식\n 3. 중식\n 4. 앙식\n 5. 기타\n");
+	  switch(scanner.nextInt()) {
+	  case 1:
+		  return Category.KOREAN;
+	  case 2:
+		  return Category.JAPANESE;
+	  case 3:
+		  return Category.CHINESE;
+	  case 4:
+		  return Category.WESTERN;
+	  case 5: 
+		  return Category.OTHER;
+	  default:
+		  return null;
+	  }
    }
    
 	public static int reviewByAgeView() {

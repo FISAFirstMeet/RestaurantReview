@@ -201,40 +201,41 @@ public class ReviewDAO {
 		}
 		return reviews;
 	}
-	//category별 review 조회
-	public static ArrayList<ReviewDTO> getReviewsByCategory(String category) throws SQLException{
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		ArrayList<ReviewDTO> reviews = null;
-		
-		try {
-			conn = DBUtil.getConnection();
-			pstmt = conn.prepareStatement("select * from review where category=?");
-			pstmt.setString(1,category);
-			rset = pstmt.executeQuery();
-			
-			reviews = new ArrayList<>();
-			while(rset.next()) {
-				reviews.add(ReviewDTO.builder()
-						.reviewId(rset.getInt(1))
-						.userId(rset.getString(2))
-						.age(rset.getInt(3))
-						.gender(Gender.valueOf(rset.getString(4)))
-						.restaurantName(rset.getString(5))
-						.category(Category.valueOf(rset.getString(6)))
-						.menu(rset.getString(7))
-						.price(rset.getInt(8))
-						.content(rset.getString(9))
-						.score(rset.getDouble(10))
-						.date(rset.getTimestamp(11).toLocalDateTime())
-						.build());
-			}
-		} finally {
-			DBUtil.close(conn, pstmt, rset);
-		}
-		
-		return reviews;
+	
+	// category별 review 조회
+	public static ArrayList<ReviewDTO> getReviewsByCategory(Category category) throws SQLException {
+	    Connection conn = null;
+	    PreparedStatement pstmt = null;
+	    ResultSet rset = null;
+	    ArrayList<ReviewDTO> reviews = null;
+
+	    try {
+	        conn = DBUtil.getConnection();
+	        pstmt = conn.prepareStatement("select * from review where category=?");
+	        pstmt.setString(1, category.name());
+	        rset = pstmt.executeQuery();
+
+	        reviews = new ArrayList<>();
+	        while (rset.next()) {
+	            reviews.add(ReviewDTO.builder()
+	                    .reviewId(rset.getInt(1))
+	                    .userId(rset.getString(2))
+	                    .age(rset.getInt(3))
+	                    .gender(Gender.valueOf(rset.getString(4)))
+	                    .restaurantName(rset.getString(5))
+	                    .category(Category.valueOf(rset.getString(6))) // 영어 값 그대로 매핑
+	                    .menu(rset.getString(7))
+	                    .price(rset.getInt(8))
+	                    .content(rset.getString(9))
+	                    .score(rset.getDouble(10))
+	                    .date(rset.getTimestamp(11).toLocalDateTime())
+	                    .build());
+	        }
+	    } finally {
+	        DBUtil.close(conn, pstmt, rset);
+	    }
+
+	    return reviews;
 	}
 	
 	
