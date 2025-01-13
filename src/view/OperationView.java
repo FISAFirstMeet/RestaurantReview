@@ -58,8 +58,25 @@ public class OperationView {
 	   System.out.print("음식점 이름을 입력해주세요 : "); 
 	   String restaurantName = scanner.next();
 	   
-	   System.out.print("카테고리를 입력해주세요 : "); 
-	   String category = scanner.next();
+	   System.out.print("카테고리를 입력해주세요 (1. 한식 2. 일식 3. 중식 4. 양식 5. 기타: "); 
+	   Category category = null;
+	   switch(scanner.nextInt()) {
+		  case 1:
+			  category = Category.KOREAN;
+			  break;
+		  case 2:
+			  category = Category.JAPANESE;
+			  break;
+		  case 3:
+			  category = Category.CHINESE;
+			  break;
+		  case 4:
+			  category = Category.WESTERN;
+			  break;
+		  case 5: 
+			  category = Category.OTHER;
+			  break;
+	   }
 
 	   System.out.print("메뉴를 입력해주세요 : "); 
 	   String menu = scanner.next();
@@ -75,7 +92,7 @@ public class OperationView {
 	   
 	   ReviewDTO review = ReviewDTO.builder()
 			   				.restaurantName(restaurantName)
-			   				.category(Category.valueOf(category))
+			   				.category(category)
 			   				.menu(menu)
 			   				.price(price)
 			   				.content(content)
