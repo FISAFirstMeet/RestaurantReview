@@ -38,18 +38,27 @@ public class SuccessView {
 			
 			cnt++;
 		}
+
 		
 		// 리뷰 자세히 보기
-		System.out.println("\n[리뷰 내용을 보고 싶은 번호를 선택하세요]\n[메뉴로 돌아가려면 0번을 입력해 주세요]");
-		String inputString = scanner.nextLine();
-		int inputInt = Integer.parseInt(inputString);
-		
-		// TODO 잘못된 값 예외처리
-		if (inputInt != 0) {
-			System.out.printf("\n[리뷰내용]\n%s\n", reviewDTOs.get(inputInt - 1).getContent());
+		while(true) {
+			System.out.println("\n[리뷰 내용을 보고 싶은 번호를 선택하세요]\n[메뉴로 돌아가려면 0번을 입력해 주세요]");
+			String inputString = scanner.nextLine();
+			int inputInt = Integer.parseInt(inputString);
 			
-			isContinue();
+			if (inputInt == 0) {
+				return;
+			}
+			if (inputInt > 0 && inputInt <= reviewDTOs.size()) {
+				System.out.printf("\n[리뷰내용]\n%s\n", reviewDTOs.get(inputInt - 1).getContent());
+				
+				isContinue();
+				return;
+			}
+			
+			System.out.println("잘못된 값을 입력하셨습니다.");
 		}
+		
 	}
 	
 	/**

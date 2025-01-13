@@ -41,6 +41,7 @@ public class StartView {
 		sb.append("안녕하세요. 맛집 리뷰 프로그램입니다.\n")
 			.append("아이디를 입력해주세요.");
 		String str = sb.toString();
+		System.out.println(str);
 		String userId = scanner.next();
 		
 		System.out.println("만 나이를 입력해주세요.");
