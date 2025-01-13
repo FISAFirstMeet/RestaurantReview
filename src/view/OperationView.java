@@ -45,13 +45,13 @@ public class OperationView {
 	   //기입력 정보 : userid,age,gender
 	   //미입력 : restaurant_name,category,menu,price,content,score
 	   System.out.print("음식점 이름을 입력해주세요 : "); 
-	   String restaurantName = scanner.nextLine();
+	   String restaurantName = scanner.next();
 	   
 	   System.out.print("카테고리를 입력해주세요 : "); 
-	   String category = scanner.nextLine();
+	   String category = scanner.next();
 
 	   System.out.print("메뉴를 입력해주세요 : "); 
-	   String menu = scanner.nextLine();
+	   String menu = scanner.next();
 
 	   System.out.print("가격을 입력해주세요 : "); 
 	   int price = scanner.nextInt();
