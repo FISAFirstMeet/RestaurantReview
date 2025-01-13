@@ -139,7 +139,7 @@ public class ReviewDAO {
 	}
 
 	// 3
-	public static ArrayList<ReviewDTO> getReviewsSortedByPriceDesc() throws SQLException {
+	public static ArrayList<ReviewDTO> getReviewsSortedByPriceAsc() throws SQLException {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -147,7 +147,7 @@ public class ReviewDAO {
 
 		try {
 			conn = DBUtil.getConnection();
-			pstmt = conn.prepareStatement("select * from review order by price desc");
+			pstmt = conn.prepareStatement("select * from review order by price asc");
 			rset = pstmt.executeQuery();
 
 			reviews = new ArrayList<>();
