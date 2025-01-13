@@ -61,6 +61,7 @@ public class ReviewController {
        try {
     	   ArrayList<ReviewDTO> result;
     	   Gender gender;
+    	   int age;
            switch (ck) {
                case "1": // 전체 리뷰 조회
                    result = ReviewDAO.getAllReviews();
@@ -81,20 +82,27 @@ public class ReviewController {
                    result = ReviewDAO.getMyReviews();
                    SuccessView.myReviewRead(result);
                    break;
+               
+               case "5": // 연령대 별 조회
+            	   age = OperationView.reviewByAgeView();
+            	   result = ReviewDAO.getReviewByAge(age);
+            	   SuccessView.ageRead(result);
+            	   break;
+            	   
+               case "6": // gender 별 조회
+            	   gender = OperationView.reviewByGenderView(); // 성별 입력값
+                   result = ReviewDAO.getReviewByGender(gender);
+                   SuccessView.genderRead(result);
+                   break;
 
-               case "5": // 연령대와 성별로 리뷰 조회
+               case "7": // 연령대와 성별로 리뷰 조회
                    gender = OperationView.reviewByGenderView(); // 성별 입력값 (예: "M" 또는 "F")
-                   int age = OperationView.reviewByAgeView(); // 연령 입력값 (예: 30)
+                   age = OperationView.reviewByAgeView(); // 연령 입력값 (예: 30)
                    result = ReviewDAO.getReviewByAgeAndGender(gender, age);
                    SuccessView.ageAndGenderRead(result);
                    break;
 
-               case "6": // gender 별 조회
-                   gender = OperationView.reviewByGenderView(); // 성별 입력값
-                   result = ReviewDAO.getReviewByGender(gender);
-                   break;
-
-               case "7": // category 별 조회
+               case "8": // category 별 조회
                    String category = OperationView.reviewsByCategoryView().getKorean(); // 카테고리 입력값
                    result = ReviewDAO.getReviewsByCategory(category);
                    SuccessView.categoryRead(result);

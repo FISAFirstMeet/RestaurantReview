@@ -285,14 +285,18 @@ public class ReviewDAO {
 	// 5
 	// age 별 조회
 	public static ArrayList<ReviewDTO> getReviewByAge(int age) throws SQLException {
+		int startAge = (age / 10) * 10; // 연령대 시작값 (10단위로 나누어서 계산)
+		int endAge = startAge + 9; // 연령대 끝값
+		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<ReviewDTO> reviews = null;
 		try {
 			conn = DBUtil.getConnection();
-			pstmt = conn.prepareStatement("select * from review where age=?");
-			pstmt.setInt(1, age);
+			pstmt = conn.prepareStatement("select * from review where age between ? and ?");
+			pstmt.setInt(1, startAge);
+			pstmt.setInt(2, endAge);
 			rset = pstmt.executeQuery();
 			reviews = new ArrayList<>();
 			while (rset.next()) {

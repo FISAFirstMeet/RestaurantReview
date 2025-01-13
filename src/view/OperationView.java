@@ -117,8 +117,9 @@ public class OperationView {
       sb.append("3. 가격 낮은 순 조회\n");
       sb.append("4. 내가 쓴 리뷰 조회\n");
       sb.append("5. 연령대별 조회\n");
-      sb.append("6. 성별별 조회\n");
-      sb.append("7. 음식 카테고리별 조회\n");
+      sb.append("6. 성별 별 조회\n");
+      sb.append("7. 성별 / 연령대 별 조회\n");
+      sb.append("8. 음식 카테고리별 조회\n");
       	
       System.out.println(sb.toString());
       String input = scanner.next().trim();
