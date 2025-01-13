@@ -58,13 +58,16 @@ public class ReviewController {
 //R
    public static void selectReview(String ck) {
        try {
+    	   ArrayList<ReviewDTO> result;
            switch (ck) {
                case "1": // 전체 리뷰 조회
-                   ReviewDAO.getAllReviews();
+                   result = ReviewDAO.getAllReviews();
+                   SuccessView.allReviewRead(result);
                    break;
 
                case "2": // 별점 높은순 조회
-                   ArrayList<ReviewDTO> result = ReviewDAO.getReviewsByScoreDesc();
+                   result = ReviewDAO.getReviewsByScoreDesc();
+                   SuccessView.topRatedRead(result);
                    break;
 
                case "3": // price 낮은 순 조회
@@ -75,7 +78,7 @@ public class ReviewController {
                case "4": // 내가 쓴 리뷰 조회
                    result = ReviewDAO.getMyReviews();
                    SuccessView.myReviewRead(result);
-               break;
+                   break;
 
                case "5": // 연령대와 성별로 리뷰 조회
                    String gender = OperationView.reviewByGenderView().getKorean(); // 성별 입력값 (예: "M" 또는 "F")
