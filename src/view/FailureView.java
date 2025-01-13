@@ -5,7 +5,8 @@ public class FailureView {
 		System.out.println("생성에 실패했습니다.");
 	}
 	
-	public static void FailRead() {
+	public static void FailRead(Exception e) {
+		System.out.println(e);
 		System.out.println("읽기에 실패했습니다.");
 	}
 	

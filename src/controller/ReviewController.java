@@ -46,7 +46,7 @@ public class ReviewController {
 				ReviewDAO.deleteReview(reviewId);
          }
       } catch (Exception e) {
-         FailureView.FailRead();
+         FailureView.FailRead(e);
       }
    }
 
@@ -101,12 +101,12 @@ public class ReviewController {
                    break;
 
                default:
-                   FailureView.FailRead();
+//                   FailureView.FailRead(e);
                    return;
            }
            //SuccessView.Message("리뷰가 등록되었습니다.");
        } catch (Exception e) {
-           FailureView.FailRead();
+           FailureView.FailRead(e);
        }
    }
 }
