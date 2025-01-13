@@ -18,4 +18,12 @@ public enum Category {
 		return category;
 	}
 	
+	public static Category from(String input) {
+        for (Category c : Category.values()) {
+            if (c.category.equals(input)) {
+                return c;
+            }
+        }
+        throw new IllegalArgumentException("해당 한글 값에 해당하는 카테고리가 없습니다: " + input);
+    }
 }

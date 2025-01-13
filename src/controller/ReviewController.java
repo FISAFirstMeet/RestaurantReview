@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.ReviewDAO;
+import model.domain.Category;
 import model.domain.Gender;
 import model.domain.UserInfo;
 import model.dto.ReviewDTO;
@@ -103,7 +104,7 @@ public class ReviewController {
                    break;
 
                case "8": // category 별 조회
-                   String category = OperationView.reviewsByCategoryView().getKorean(); // 카테고리 입력값
+                   Category category = OperationView.reviewsByCategoryView(); // 카테고리 입력값
                    result = ReviewDAO.getReviewsByCategory(category);
                    SuccessView.categoryRead(result);
                    break;
