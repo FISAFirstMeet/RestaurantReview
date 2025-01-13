@@ -66,7 +66,7 @@ public class SuccessView {
 	}
 
 	public static void topRatedRead(ArrayList<ReviewDTO> reviewDTOs) {
-		System.out.println("[별점 높은 순]");
+		System.out.println("[별점 낮은 순]");
 		printReview(reviewDTOs);
 	}
 	
