@@ -80,7 +80,7 @@ public class ReviewDAO {
 	}
 	
 	//2 별점 높은 순
-	public static ArrayList<ReviewDTO> getReviewsByScoreDesc(double score) throws SQLException{
+	public static ArrayList<ReviewDTO> getReviewsByScoreDesc() throws SQLException{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -88,8 +88,7 @@ public class ReviewDAO {
 
 		try {
 			conn = DBUtil.getConnection();
-			pstmt = conn.prepareStatement("select * from review where score=? order by score decs");
-			pstmt.setDouble(1, score);
+			pstmt = conn.prepareStatement("select * from review order by score desc");
 			rset = pstmt.executeQuery();
 
 			reviews = new ArrayList<>();
@@ -140,7 +139,7 @@ public class ReviewDAO {
 	}
 	
 	// 3
-	public static ArrayList<ReviewDTO> getReviewsSortedByPriceDesc() throws SQLException {
+	public static ArrayList<ReviewDTO> getReviewsSortedByPriceAsc() throws SQLException {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -148,7 +147,7 @@ public class ReviewDAO {
 
 		try {
 			conn = DBUtil.getConnection();
-			pstmt = conn.prepareStatement("select * from review order by price desc");
+			pstmt = conn.prepareStatement("select * from review order by price asc");
 			rset = pstmt.executeQuery();
 
 			reviews = new ArrayList<>();
