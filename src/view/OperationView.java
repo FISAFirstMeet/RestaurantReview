@@ -28,12 +28,14 @@ public class OperationView {
       return null;
    }
    
-   public static int updateReviewIdView() {
-      return 0;
+   public static int readReviewIdView() {
+	   System.out.println("수정할 리뷰 번호를 입력해주세요.");
+	   return Integer.parseInt(scanner.next().trim());
    }
    
-   public static String updateContentView() {
-      return null;
+   public static String readContentView() {
+	   System.out.println("수정할 리뷰 내용을 입력해주세요.");
+	   return scanner.next().trim();
    }
 
    public static int deleteView() {
