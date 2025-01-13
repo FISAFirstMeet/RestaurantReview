@@ -62,7 +62,7 @@ public class StartView {
 		userInfo.setGender(gender);
 		
 		UserInfo user1 = UserInfo.getInstance();
-		System.out.println(user1.getAge());
+		
 	}
 
 }
