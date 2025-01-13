@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import org.junit.Test;
 
+import controller.ReviewController;
 import model.domain.Gender;
 import model.domain.UserInfo;
 
@@ -30,7 +31,7 @@ public class StartView {
 				break;
 			}
 			
-			//ReviewController.run(reply);
+			ReviewController.choice(reply);
 		}
 		
 	}
