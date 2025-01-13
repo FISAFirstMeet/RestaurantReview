@@ -251,7 +251,7 @@ public class ReviewDAO {
 	
 	//연령대와 gender 받아서 review 조회
 	//연령대는 10단위로 숫자 받아서 계산해야함
-	public static ArrayList<ReviewDTO> getReviewByAgeAndGender(String gender, int age) throws SQLException{
+	public static ArrayList<ReviewDTO> getReviewByAgeAndGender(Gender gender, int age) throws SQLException{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -265,7 +265,7 @@ public class ReviewDAO {
 			
 			conn = DBUtil.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, gender);
+			pstmt.setString(1, gender.name());
 			pstmt.setInt(2, startAge);
 			pstmt.setInt(3, endAge);
 			rset = pstmt.executeQuery();
@@ -332,7 +332,7 @@ public class ReviewDAO {
 		try {
 			conn = DBUtil.getConnection();
 			pstmt = conn.prepareStatement("select * from review where gender=?");
-			pstmt.setString(1, gender.getKorean());
+			pstmt.setString(1, gender.name());
 			rset = pstmt.executeQuery();
 
 			reviews = new ArrayList<>();
