@@ -7,6 +7,12 @@
 CLI 인터페이스를 통해 맛집 정보를 입력하고, 리뷰를 체계적으로 관리하여 사용자들에게 보다 풍부한 경험을 제공
 
 
+## 👥 조원
+|<img src="https://avatars.githubusercontent.com/u/80048007?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/60309978?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/129049084?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/193316939?v=4" width="150" height="150"/>|
+|:-:|:-:|:-:|:-:|
+|박영진<br/>[@DoomchitYJ](https://github.com/DoomchitYJ)|박정호<br/>[@Jeongho427](https://github.com/Jeongho427)|민정인<br/>[@min-jp](https://github.com/min-jp)|박재희<br/>[@JaeHee-devSpace](https://github.com/JaeHee-devSpace)|
+
+
 ## 📝 기획
 
 
