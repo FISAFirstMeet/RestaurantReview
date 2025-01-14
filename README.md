@@ -199,7 +199,8 @@ CLI 인터페이스를 통해 맛집 정보를 입력하고, 리뷰를 체계적
 ### 📦 패키지 구조
 
 
-![image](https://github.com/user-attachments/assets/c74c5413-2d8f-4555-8fe3-57a458d2e59f)
+![image](https://github.com/user-attachments/assets/a82fdb2d-a573-432c-8d00-ec8ff42bd570)
+
 
 
 ### 🎨 MVC 패턴 구조
