@@ -123,29 +123,16 @@ CLI 인터페이스를 통해 맛집 정보를 입력하고, 리뷰를 체계적
 
 ### ⚙️ 기술 스택
 
+<div>
+<img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"> 
+<img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"> 
+<img src="https://img.shields.io/badge/linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"> 
 
-- **언어**: Java 17
-
-
-- **라이브러리**: JDBC, Lombok
-
-
-- **빌드 도구**: Maven
-
-
-- **DB**: MySQL
-
-
-- **DB 운영 환경**: VirtualBox - Ubuntu
-
-
-- **버전 관리**: Git, GitHub
-
-
-- **협업 도구**: Slack
-
-
-- **테스트 프레임워크**: JUnit
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+<img src="https://img.shields.io/badge/JUnit4-25A162?style=for-the-badge&logo=JUnit4&logoColor=white">
+<img src="https://img.shields.io/badge/slack-4A154B?style=for-the-badge&logo=slack&logoColor=white">
+</div>
 
 
 ### 🌟 주요 기능
